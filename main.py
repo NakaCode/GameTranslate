@@ -34,7 +34,7 @@ from src.license import is_premium
 from src.ocr import check_ocr_language, extract_blocks
 from src.overlay import OverlayWindow, find_screen_for_monitor
 from src.settings_dialog import SettingsDialog
-from src.translator import translate_blocks
+from src.translator import translate_blocks, get_cache_stats
 from src.update_checker import check_for_update
 
 
@@ -290,6 +290,9 @@ class PolyQuest(QObject):
         self._working = False
         self._tray.setToolTip(t("tray_tooltip_ready"))
 
+        stats = get_cache_stats()
+        print(f"[PolyQuest] Cache: {stats['hits']} hits, {stats['misses']} misses ({stats['ratio']}), {stats['size']} entries")
+
         if not blocks:
             self._tray.showMessage(
                 "PolyQuest",
@@ -312,6 +315,8 @@ class PolyQuest(QObject):
             QSystemTrayIcon.MessageIcon.Critical,
             3000,
         )
+        stats = get_cache_stats()
+        print(f"[PolyQuest] Cache: {stats['hits']} hits, {stats['misses']} misses ({stats['ratio']}), {stats['size']} entries")
         print(f"[PolyQuest] Erro:\n{message}")
 
 
