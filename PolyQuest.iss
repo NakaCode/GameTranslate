@@ -48,6 +48,7 @@ Source: "dist\{#AppExeName}"; DestDir: "{app}"; Flags: ignoreversion
 Source: "config.json"; DestDir: "{app}"; Flags: onlyifdoesntexist
 Source: "icon.ico"; DestDir: "{app}"; Flags: ignoreversion
 Source: "icon_settings.ico"; DestDir: "{app}"; Flags: ignoreversion
+Source: "install_ocr.ps1"; DestDir: "{tmp}"; Flags: deleteafterinstall
 
 [Icons]
 Name: "{autoprograms}\{#AppName}"; Filename: "{app}\{#AppExeName}"
@@ -56,7 +57,7 @@ Name: "{userstartup}\{#AppName}"; Filename: "{app}\{#AppExeName}"; Tasks: startu
 
 [Run]
 ; Instala pacotes de idioma OCR automaticamente (en-US, pt-BR, es-ES)
-Filename: "powershell.exe"; Parameters: "-NoProfile -ExecutionPolicy Bypass -Command ""$langs = @('en-US','pt-BR','es-ES'); foreach ($l in $langs) {{ $cap = Get-WindowsCapability -Online -Name \"\"Language.OCR~~~$($l)~0.0.1.0\"\"; if ($cap.State -ne 'Installed') {{ Add-WindowsCapability -Online -Name \"\"Language.OCR~~~$($l)~0.0.1.0\"\" }} }}"""; Flags: runhidden waituntilterminated; StatusMsg: "Instalando pacotes de idioma OCR do Windows..."
+Filename: "powershell.exe"; Parameters: "-NoProfile -ExecutionPolicy Bypass -File ""{tmp}\install_ocr.ps1"""; Flags: runhidden waituntilterminated; StatusMsg: "Instalando pacotes de idioma OCR do Windows..."
 Filename: "{app}\{#AppExeName}"; Description: "Iniciar {#AppName} agora"; Flags: nowait postinstall skipifsilent
 
 [UninstallDelete]
