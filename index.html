@@ -8,7 +8,7 @@
   <meta name="description" content="Traduza qualquer jogo em tempo real. PolyQuest captura o texto da tela e exibe a tradução diretamente sobre o jogo, sem interferir na gameplay." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400;700&family=VT323&display=swap" rel="stylesheet" />
   <style>
     /* ── Reset & base ─────────────────────────────────────────────── */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -28,7 +28,7 @@
       --purple:    #aa55ff;
       --cyan:      #44ddff;
       --radius:    0px;
-      --pixel-font: 'Press Start 2P', monospace;
+      --pixel-font: 'Pixelify Sans', monospace;
       --body-font:  'VT323', monospace;
     }
 
@@ -2144,12 +2144,12 @@
 <div id="coupon-modal" style="display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,0.8);align-items:center;justify-content:center;">
   <div style="background:#12121e;border:3px solid var(--gold-dim);padding:28px;max-width:420px;width:90%;position:relative;box-shadow:6px 6px 0 rgba(0,0,0,0.6);">
     <button onclick="closeCouponModal()" style="position:absolute;top:10px;right:14px;background:none;border:none;color:var(--muted);font-size:1.3rem;cursor:pointer;line-height:1;font-family:var(--body-font);">x</button>
-    <h3 style="color:var(--gold);font-family:var(--pixel-font);font-size:.6rem;line-height:2;margin-bottom:4px;">Finalizar compra</h3>
+    <h3 style="color:var(--gold);font-family:var(--pixel-font);font-size:1.2rem;line-height:2;margin-bottom:4px;">Finalizar compra</h3>
     <p style="color:var(--muted);font-size:1.15rem;margin-bottom:16px;">PolyQuest Premium -- Licenca vitalicia</p>
 
     <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;padding:10px 14px;background:var(--bg);border:2px solid var(--border);">
       <span style="color:var(--text);font-size:1.15rem;">Total</span>
-      <span id="modal-price" style="color:var(--gold);font-family:var(--pixel-font);font-size:.8rem;">R$ 9,99</span>
+      <span id="modal-price" style="color:var(--gold);font-family:var(--pixel-font);font-size:1.4rem;">R$ 9,99</span>
     </div>
 
     <label style="font-family:var(--body-font);font-size:1.1rem;color:var(--muted);text-transform:uppercase;display:block;margin-bottom:6px;">Cupom de desconto</label>
@@ -2305,10 +2305,10 @@ function closePurchaseModal() {
   var content = '';
 
   if (purchase === 'success' && key) {
-    content = '<h2 style="color:var(--green);font-family:var(--pixel-font);font-size:.6rem;line-height:2;margin:0 0 8px;">Compra concluida!</h2>'
+    content = '<h2 style="color:var(--green);font-family:var(--pixel-font);font-size:1.2rem;line-height:2;margin:0 0 8px;">Compra concluida!</h2>'
       + '<p style="color:var(--muted);font-size:1rem;margin-bottom:16px;">Sua chave de licenca:</p>'
       + '<div style="background:var(--bg);border:3px solid var(--gold);padding:18px;margin-bottom:16px;text-align:center;">'
-      + '<p style="font-family:var(--pixel-font);font-size:.6rem;color:var(--gold);letter-spacing:3px;margin:0;" id="purchase-key">' + key + '</p>'
+      + '<p style="font-family:var(--pixel-font);font-size:1.2rem;color:var(--gold);letter-spacing:3px;margin:0;" id="purchase-key">' + key + '</p>'
       + '<button onclick="navigator.clipboard.writeText(\'' + key.replace(/'/g, "\\'") + '\');this.textContent=\'Copiado!\'" style="margin-top:12px;background:var(--gold);color:var(--bg);border:2px solid #fff;padding:8px 20px;font-family:var(--body-font);font-size:1.2rem;cursor:pointer;box-shadow:2px 2px 0 rgba(0,0,0,0.4);">Copiar chave</button>'
       + '</div>'
       + '<div style="text-align:left;background:var(--bg);border:2px solid var(--border);padding:14px;margin-bottom:12px;">'
@@ -2318,7 +2318,7 @@ function closePurchaseModal() {
       + '</div>'
       + '<p style="color:var(--muted);font-size:1.1rem;">Guarde esta chave! Ela e vinculada a sua maquina.</p>';
   } else if (purchase === 'pending') {
-    content = '<h2 style="color:var(--gold);font-family:var(--pixel-font);font-size:.5rem;line-height:2;margin:0 0 8px;">Aguardando pagamento...</h2>'
+    content = '<h2 style="color:var(--gold);font-family:var(--pixel-font);font-size:1rem;line-height:2;margin:0 0 8px;">Aguardando pagamento...</h2>'
       + '<p style="color:var(--muted);font-size:1rem;">O pagamento esta sendo processado. Aguarde.</p>'
       + '<div style="margin:20px 0;text-align:center;"><div style="border:3px solid var(--border);border-top:3px solid var(--gold);width:24px;height:24px;animation:spin 1s steps(8) infinite;display:inline-block;"></div></div>'
       + '<style>@keyframes spin{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}</style>';
@@ -2326,7 +2326,7 @@ function closePurchaseModal() {
       window.location.href = 'https://mckcypgoimtjsxngkelh.supabase.co/functions/v1/mp-webhook?payment_id=' + paymentId;
     }, 5000);
   } else {
-    content = '<h2 style="color:var(--gold);font-family:var(--pixel-font);font-size:.5rem;line-height:2;margin:0 0 8px;">Erro ao gerar chave</h2>'
+    content = '<h2 style="color:var(--gold);font-family:var(--pixel-font);font-size:1rem;line-height:2;margin:0 0 8px;">Erro ao gerar chave</h2>'
       + '<p style="color:var(--muted);font-size:1rem;">Entre em contato informando seu e-mail de compra:</p>'
       + '<p style="color:var(--gold);font-family:var(--body-font);font-size:1.2rem;">contato.naka@hotmail.com</p>'
       + '<p style="margin-top:8px;"><a href="https://discord.gg/b45u2gN7Zx" target="_blank" style="color:#7289da;font-family:var(--body-font);font-size:1.2rem;">Discord</a></p>';
