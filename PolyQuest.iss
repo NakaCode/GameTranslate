@@ -2,7 +2,7 @@
 ; Gera: PolyQuest_Setup.exe
 
 #define AppName      "PolyQuest"
-#define AppVersion   "1.3"
+#define AppVersion   "1.4"
 #define AppPublisher "PolyQuest"
 #define AppExeName   "PolyQuest.exe"
 #define AppURL       ""
